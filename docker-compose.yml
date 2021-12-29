@@ -1,0 +1,23 @@
+services:
+  wordpress:
+    container_name: bk-wp
+    image: wordpress:5.2-php7.3-apache
+    ports:
+      - '80:80'
+    volumes:
+      - ./files:/var/www/html
+    depends_on:
+      - db
+  db:
+    container_name: bk-db
+    image: mariadb:5.5
+    environment:
+      - MYSQL_USER=best_user
+      - MYSQL_PASSWORD=best_pass
+      - MYSQL_DATABASE=best_db
+      - MYSQL_ROOT_USER=root
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./dbdata:/var/lib/mysql
