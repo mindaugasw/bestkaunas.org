@@ -1,7 +1,7 @@
 services:
   wordpress:
     container_name: bk-wordpress
-    image: wordpress:5.2-php7.3-apache
+    image: wordpress:5.8-php8.0-apache
     ports:
       - '80:80'
     environment:
@@ -15,7 +15,7 @@ services:
       - db
   db:
     container_name: bk-db
-    image: mariadb:5.5
+    image: mariadb:10.7
     environment:
       - MYSQL_USER=best_user
       - MYSQL_PASSWORD=best_pass
