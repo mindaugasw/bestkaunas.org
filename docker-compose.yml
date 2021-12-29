@@ -1,9 +1,14 @@
 services:
   wordpress:
-    container_name: bk-wp
+    container_name: bk-wordpress
     image: wordpress:5.2-php7.3-apache
     ports:
       - '80:80'
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=best_user
+      - WORDPRESS_DB_PASSWORD=best_pass
+      - WORDPRESS_DB_NAME=best_db
     volumes:
       - ./files:/var/www/html
     depends_on:
@@ -21,3 +26,16 @@ services:
       - '3306:3306'
     volumes:
       - ./dbdata:/var/lib/mysql
+
+  phpmyadmin:
+    container_name: bk-phpmyadmin
+    image: phpmyadmin:5.1-apache
+    environment:
+      - PMA_HOST=db
+      - PMA_USER=best_user
+      - PMA_PASSWORD=best_pass
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - '8050:80'
+    depends_on:
+      - db
