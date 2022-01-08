@@ -1,8 +1,10 @@
 # bestkaunas.org
 
 ### Running locally
-- Extract exported files into `files`
-- `docker-compose up`
+- Install Docker and Docker-compose (or Docker Desktop)
+- Download git repository
+- Extract exported website files into `files`
+- Run command `docker-compose up`
 - Access database through http://localhost:8050/
 - Import exported database
 - Run SQL script:
@@ -15,3 +17,4 @@
 
 ### Deploying to production
 - Set database connection details in `files/wp-config.php`
+- Upload files trough FTP
